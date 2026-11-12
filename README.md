@@ -22,9 +22,9 @@ This project uses machine learning to decide whether a person is allowed to ente
 
 - **Installation:** 
 
-    Requires Python 3.10 or newer:
+    Requires Python 3.12 or newer. From the repository root:
     ```
-    python -m pip install numpy scipy soundfile webrtcvad-wheels
+    python -m pip install -r requirements.txt
     ```
 - **Usage:**
     ```
