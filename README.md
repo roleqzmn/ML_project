@@ -4,13 +4,13 @@ This project uses machine learning to decide whether a person is allowed to ente
 ## Milestone 1
 
 ### Audio conversion
-`wav_convereter.ps1` converts audio files to WAV, including files in all subfolders. Original files stay unchanged.
+`wav_converter.ps1` converts audio files to WAV, including files in all subfolders. Original files stay unchanged.
 
 - **Installation:**
 
   Requires Windows 10/11. FFmpeg is downloaded automatically on first use.
 - **Usage:**
-  Eun directly in PowerShell:
+  Run directly in PowerShell:
   ```powershell
   .\wav_converter.ps1 -InputFolder "C:\recordings"
   ```
@@ -42,9 +42,9 @@ This project uses machine learning to decide whether a person is allowed to ente
 
 - **Installation:**
 
-  Requires Python 3.10 or newer:
+  Requires Python 3.12 or newer:
   ```bash
-  python -m pip install numpy librosa matplotlib soundfile
+  python -m pip install -r requirements.txt
   ```
 
 - **Usage:**
