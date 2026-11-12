@@ -1,7 +1,6 @@
 
 import csv
 import tarfile
-import shutil
 import requests
 from pathlib import Path
 
