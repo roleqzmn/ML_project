@@ -4,13 +4,13 @@ This project uses machine learning to decide whether a person is allowed to ente
 ## Milestone 1
 
 ### Audio conversion
-`wav_convereter.ps1` converts audio files to WAV, including files in all subfolders. Original files stay unchanged.
+`wav_converter.ps1` converts audio files to WAV, including files in all subfolders. Original files stay unchanged.
 
 - **Installation:**
 
   Requires Windows 10/11. FFmpeg is downloaded automatically on first use.
 - **Usage:**
-  Eun directly in PowerShell:
+  Run directly in PowerShell:
   ```powershell
   .\wav_converter.ps1 -InputFolder "C:\recordings"
   ```
@@ -36,5 +36,37 @@ This project uses machine learning to decide whether a person is allowed to ente
 - **Output:**
     The output folder contains WAV clips, `manifest.csv` with labels and source timestamps, `skipped.csv` with reasons for skipped segments, and `run.json` with settings and statistics.
 
+### Spectrogram creation
 
+`create_spectrograms.py` converts audio chunks into Mel spectrograms, which are used as input for CNN models.
+
+- **Installation:**
+
+  Requires Python 3.12 or newer:
+  ```bash
+  python -m pip install -r requirements.txt
+  ```
+
+- **Usage:**
+  ```bash
+  python m1/create_spectrograms.py spectrograms --allowed <allowed_chunks> --not-allowed <not_allowed_chunks>
+  ```
+
+  - `spectrograms`: output folder, which must be new or empty.
+  - `--allowed`: folder containing allowed audio chunks and `manifest.csv`.
+  - `--not-allowed`: folder containing not-allowed audio chunks and `manifest.csv`.
+
+- **Preprocessing:**
+
+  Audio chunks are converted to mono at 16 kHz and padded with silence to 3 seconds. Mel spectrograms are generated using 64 Mel bands, FFT size 1024 and hop length 256. The spectrograms are converted to decibels and saved as float32 arrays of shape `(64, 188)`.
+
+- **Output:**
+
+  The output folder contains:
+  - `npy/allowed/` and `npy/not_allowed/` with spectrogram arrays saved as `.npy` files, preserving the original chunk folder structure.
+  - `spectrograms.csv` with file paths, class labels and metadata from `manifest.csv`.
+  - `examples/` with three example spectrograms per class saved as PDF files.
+  - `run.json` with settings and the number of generated spectrograms.
+
+  Audio recordings and chunks are stored on Google Drive. Generated spectrograms are stored locally and are not committed to the repository. Selected example PDFs can be added to GitHub.
 
