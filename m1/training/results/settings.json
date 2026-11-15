@@ -1,0 +1,9 @@
+{
+  "csv": "C:\\Users\\wujci\\Desktop\\projects\\ml\\prepared_data\\manifest.csv",
+  "output": "C:\\Users\\wujci\\Desktop\\projects\\ml\\results",
+  "epochs": 20,
+  "batch_size": 64,
+  "workers": 2,
+  "lr": 0.001,
+  "device": "cuda"
+}
